@@ -1,22 +1,22 @@
-import { Route } from 'react-router-dom'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
-import { Home ,ExerciseDetail} from './components'
+import { Home ,ExerciseDetail} from './pages'
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />} >
-      <Route path='/' element={<Home />}/>
-      <Route path='exercise/:id' element={<ExerciseDetail />}/>
+    <Route path='/' element={<App />}>
+      <Route path='/' element={<Home />} />
+      <Route path='/exercise/:id' element={<ExerciseDetail />} />
     </Route>
   )
-])
+)
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider />
+    <RouterProvider router={router}/>
   </React.StrictMode>,
 )

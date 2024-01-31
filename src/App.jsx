@@ -1,11 +1,13 @@
 import { Outlet } from "react-router-dom"
+import { Navbar ,Footer} from "./components"
 
 function App() {
   return (
     <>
       <div className="w-full">
-        Navbar 
+        <Navbar /> 
         <Outlet />
+        <Footer />
       </div>
     </>
   )
