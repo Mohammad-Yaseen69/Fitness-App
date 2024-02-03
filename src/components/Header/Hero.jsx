@@ -3,7 +3,7 @@ import banner from '../../assets/images/banner.png'
 
 const Hero = () => {
     return (
-        <div className='w-full h-[95vh] flex md:items-center justify-center px-14 '>
+        <div className='w-full h-[95vh] max-md:h-[70vh] flex md:items-center justify-center px-14 '>
 
             <div className='flex flex-col md:w-full max-md:mt-11 max-sm:gap-3 max-sm:mt-24 max-md:items-center items-start gap-6'>
                 <h1
