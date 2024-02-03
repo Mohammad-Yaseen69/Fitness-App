@@ -2,16 +2,27 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { fetchData } from '../../FetchData/fetchData'
 import { useDispatch } from 'react-redux'
-import { setExercises , emptyExercises } from '../../store/ExerciseSlice'
+import { setExercises, emptyExercises } from '../../store/ExerciseSlice'
 
 const InputBox = () => {
     const [search, setSearch] = useState('')
     const dispatch = useDispatch()
 
     const handleSubmit = (e) => {
-        const data = fetchData(`name/${search}`).then((data) => {
-            console.log(data);
-        })
+        if (search) {
+            const searchTerm = search.toLowerCase().trim()
+            const data = fetchData('exercises').then((data) => {
+              const filterData =   data.filter(
+                    (exercise) => exercise.bodyPart.includes(searchTerm) ||
+                    exercise.equipment.includes(searchTerm) ||
+                    exercise.name.includes(searchTerm) ||
+                    exercise.target.includes(searchTerm)
+                )
+
+                setSearch('')
+               dispatch(setExercises(filterData))
+            })
+        }
     }
 
     return (
@@ -21,7 +32,7 @@ const InputBox = () => {
                     <input className="input max-ss:w-[70vw]"
                         value={search} onChange={(e) => setSearch(e.target.value)}
                         type="text"
-                        placeholder='Search Exercise'
+                        placeholder='Search Exercise , BodyPart , Equipment'
                     />
                     <div onClick={handleSubmit} className='cursor-pointer'>
                         <svg viewBox="0 0 24 24" className="search__icon">

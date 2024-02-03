@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const Base_Url = "https://exercisedb.p.rapidapi.com/exercises"
+const Base_Url = "https://exercisedb.p.rapidapi.com/"
 
 const options = {
-  params: {limit: '10'},
+  params: {limit: 1327},
   headers: {
     'X-RapidAPI-Key': import.meta.env.VITE_API_KEY,
     'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
@@ -11,6 +11,6 @@ const options = {
 };
 
 export const fetchData = async (url) => {
-    const {data} = await axios.get(`${Base_Url}/${url}` , options);
+    const {data} = await axios.get(`${Base_Url}${url}` , options);
     return data
 }
