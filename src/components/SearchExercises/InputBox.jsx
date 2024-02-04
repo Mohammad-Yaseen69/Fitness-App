@@ -12,15 +12,15 @@ const InputBox = () => {
         if (search) {
             const searchTerm = search.toLowerCase().trim()
             const data = fetchData('exercises').then((data) => {
-              const filterData =   data.filter(
+                const filterData = data.filter(
                     (exercise) => exercise.bodyPart.includes(searchTerm) ||
-                    exercise.equipment.includes(searchTerm) ||
-                    exercise.name.includes(searchTerm) ||
-                    exercise.target.includes(searchTerm)
+                        exercise.equipment.includes(searchTerm) ||
+                        exercise.name.includes(searchTerm) ||
+                        exercise.target.includes(searchTerm)
                 )
 
-                setSearch('')
-               dispatch(setExercises(filterData))
+                dispatch(setExercises(filterData))
+                setSearch("")
             })
         }
     }

@@ -1,9 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    data : [
-
-    ]
+    data : "All"
 }
 
 const BodyPartSlice = createSlice({
