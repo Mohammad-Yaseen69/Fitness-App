@@ -4,7 +4,7 @@ import { Navbar ,Footer} from "./components"
 function App() {
   return (
     <>
-      <div className="w-full">
+      <div className="w-full overflow-x-hidden">
         <Navbar /> 
         <Outlet />
         <Footer />
