@@ -11,6 +11,9 @@ const InputBox = ({ bodyParts }) => {
 
     const handleSubmit = (e) => {
         dispatch(emptyExercises())
+        setSearch("")
+        window.scrollTo({ top: 1800, left: 100, behavior: 'smooth' })
+
         if (search) {
             const searchTerm = search.toLowerCase()
             const dataP = fetchData('exercises').then((data) => {
@@ -20,7 +23,6 @@ const InputBox = ({ bodyParts }) => {
                         exercise.name.includes(searchTerm) ||
                         exercise.target.includes(searchTerm)
                 )
-
                 bodyParts.forEach(element => {
                     if (element === searchTerm) {
                         dispatch(setBodyPart(searchTerm))
@@ -28,9 +30,8 @@ const InputBox = ({ bodyParts }) => {
                 });
 
                 dispatch(setExercises(filterData))
-                window.scrollTo({ top: 1800, left: 100, behavior: 'smooth' })
-            }).finally(() => {
-                setSearch("")
+            }).catch((err) => {
+                console.log(err);
             })
         }
     }

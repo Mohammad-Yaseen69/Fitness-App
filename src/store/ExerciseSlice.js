@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     data : [
 
-    ]
+    ],
+    loading : true
 }
 
 const ExerciseSlice = createSlice({
@@ -12,10 +13,12 @@ const ExerciseSlice = createSlice({
     reducers : {
         setExercises : (state , action) => {
             state.data = action.payload
+            state.loading = false
         },
         emptyExercises : (state) => {
             state.data = []
-        }
+            state.loading = true
+        },
     }
 })
 
