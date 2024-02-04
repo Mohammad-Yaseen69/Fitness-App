@@ -6,13 +6,12 @@ import { setBodyPart } from '../../store/BodyPartSlice'
 import { HorizontalScrollbar } from '../'
 
 const SearchExercises = () => {
-    const [data, setData] = useState(["All"])
+    const [data, setData] = useState([])
     const [loader , setLoader] = useState(true)
 
     useEffect(() => {
         setLoader(true)
         const data = fetchData('exercises/bodyPartList').then((dataP) => {
-            console.log(dataP);
             setData(prev => ["All" ,  ...dataP])
         }).finally(() => {
             setLoader(false)
@@ -26,7 +25,7 @@ const SearchExercises = () => {
                 Should Know
             </h1>
             <div>
-                <InputBox />
+                <InputBox bodyParts={data} />
             </div>
 
             <div className='w-full mt-14'>

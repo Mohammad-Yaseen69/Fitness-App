@@ -3,16 +3,17 @@ import { Link } from 'react-router-dom'
 import { fetchData } from '../../FetchData/fetchData'
 import { useDispatch } from 'react-redux'
 import { setExercises, emptyExercises } from '../../store/ExerciseSlice'
+import { setBodyPart } from '../../store/BodyPartSlice'
 
-const InputBox = () => {
+const InputBox = ({ bodyParts }) => {
     const [search, setSearch] = useState('')
     const dispatch = useDispatch()
 
-const handleSubmit = (e) => {
-    dispatch(emptyExercises())
+    const handleSubmit = (e) => {
+        dispatch(emptyExercises())
         if (search) {
-            const searchTerm = search.toLowerCase().trim()
-            const data = fetchData('exercises').then((data) => {
+            const searchTerm = search.toLowerCase()
+            const dataP = fetchData('exercises').then((data) => {
                 const filterData = data.filter(
                     (exercise) => exercise.bodyPart.includes(searchTerm) ||
                         exercise.equipment.includes(searchTerm) ||
@@ -20,9 +21,15 @@ const handleSubmit = (e) => {
                         exercise.target.includes(searchTerm)
                 )
 
+                bodyParts.forEach(element => {
+                    if (element === searchTerm) {
+                        dispatch(setBodyPart(searchTerm))
+                    }
+                });
+
                 dispatch(setExercises(filterData))
                 window.scrollTo({ top: 1800, left: 100, behavior: 'smooth' })
-            }).finally(() =>{
+            }).finally(() => {
                 setSearch("")
             })
         }
