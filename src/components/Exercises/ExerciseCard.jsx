@@ -15,6 +15,7 @@ const ExerciseCard = ({ item }) => {
     } = item
     const {data} = useSelector(state => state.bodyPart)
 
+    console.log(item);
     return (
         <div>
             <Card
@@ -27,7 +28,7 @@ const ExerciseCard = ({ item }) => {
             >
 
                 <div className='flex gap-4'>
-                    <button className='p-2 rounded-[990px]'>{data === 'All' ? secondaryMuscles[1] : data}</button>
+                    <button className='p-2 rounded-[990px]'>{bodyPart}</button>
                     <button className='p-2 rounded-[990px]'>{target}</button>
                 </div>
                 <p className="font-bold  text-2xl">
