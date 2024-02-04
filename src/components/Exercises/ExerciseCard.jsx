@@ -15,7 +15,6 @@ const ExerciseCard = ({ item }) => {
     } = item
     const {data} = useSelector(state => state.bodyPart)
 
-    console.log(item);
     return (
         <div>
             <Card
