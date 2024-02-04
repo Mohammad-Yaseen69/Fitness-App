@@ -8,7 +8,8 @@ const InputBox = () => {
     const [search, setSearch] = useState('')
     const dispatch = useDispatch()
 
-    const handleSubmit = (e) => {
+const handleSubmit = (e) => {
+    dispatch(emptyExercises())
         if (search) {
             const searchTerm = search.toLowerCase().trim()
             const data = fetchData('exercises').then((data) => {
@@ -20,6 +21,8 @@ const InputBox = () => {
                 )
 
                 dispatch(setExercises(filterData))
+                window.scrollTo({ top: 1800, left: 100, behavior: 'smooth' })
+            }).finally(() =>{
                 setSearch("")
             })
         }
