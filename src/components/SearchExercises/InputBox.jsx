@@ -27,9 +27,6 @@ const InputBox = ({ bodyParts }) => {
                     if (element === searchTerm) {
                         dispatch(setBodyPart(searchTerm))
                     }
-                    else if(element === "All"){
-                        dispatch(setBodyPart('All'))
-                    }
                 });
 
                 dispatch(setExercises(filterData))
