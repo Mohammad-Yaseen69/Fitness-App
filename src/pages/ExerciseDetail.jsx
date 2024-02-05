@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { fetchData } from '../FetchData/fetchData'
 import { Detail } from '../components'
+import { data } from 'autoprefixer'
 
 const ExerciseDetail = () => {
   const { id } = useParams()
@@ -19,7 +20,7 @@ const ExerciseDetail = () => {
 
   return (
     <div>
-      <Detail exerciseDetail={ExerciseDetail}/>
+      <Detail  exerciseDetail={ExerciseDetail}/>
     </div>
   )
 }
